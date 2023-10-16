@@ -83,11 +83,11 @@ const Header = () => {
               <NavigationMenuItem>
                 <NavigationMenuTrigger>More</NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  {moreMenuOptions.map((menuOption) => (
-                    <NavigationMenuList key={menuOption.id}>
+                  {moreMenuOptions.map((menuOption, index) => (
+                    <NavigationMenuList key={index}>
                       <NavigationMenuItem>
                         <Link
-                          key={menuOption.id}
+                          key={index}
                           href={menuOption.href}
                           legacyBehavior
                           passHref
