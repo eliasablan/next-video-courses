@@ -110,7 +110,7 @@ const Header = () => {
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
-                <Link href="student/dashboard" legacyBehavior passHref>
+                <Link href="/student/dashboard" legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                     Dashboard
                   </NavigationMenuLink>
@@ -118,7 +118,7 @@ const Header = () => {
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <Link href="videos" legacyBehavior passHref>
+                <Link href="/videos" legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                     Videos
                   </NavigationMenuLink>
@@ -126,7 +126,7 @@ const Header = () => {
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <Link href="courses" legacyBehavior passHref>
+                <Link href="/courses" legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                     Courses
                   </NavigationMenuLink>
