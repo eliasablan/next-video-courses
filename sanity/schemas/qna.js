@@ -16,21 +16,26 @@ export default defineType({
       title: 'Answer',
     },
     {
+      name: 'url',
+      type: 'url',
+      title: 'URL',
+    },
+    {
       name: 'student',
       type: 'reference',
-      to: [{type: 'user'}],
+      to: [{ type: 'user' }],
       title: 'Student',
     },
     {
       name: 'teacher',
       type: 'reference',
-      to: [{type: 'user'}],
+      to: [{ type: 'user' }],
       title: 'Teacher',
     },
     {
       name: 'video',
       type: 'reference',
-      to: [{type: 'video'}],
+      to: [{ type: 'video' }],
       title: 'Video',
     },
     {
@@ -44,4 +49,4 @@ export default defineType({
       title: 'Updated At',
     },
   ],
-})
+});

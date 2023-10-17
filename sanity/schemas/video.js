@@ -19,6 +19,11 @@ export default defineType({
       },
     },
     {
+      name: 'url',
+      type: 'url',
+      title: 'URL',
+    },
+    {
       name: 'file',
       type: 'file',
       title: 'File',
@@ -30,6 +35,13 @@ export default defineType({
       options: {
         hotspot: true,
       },
+      fields: [
+        {
+          name: 'alt',
+          type: 'string',
+          title: 'Alt',
+        },
+      ],
     },
     {
       name: 'description',

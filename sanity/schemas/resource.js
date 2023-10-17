@@ -19,6 +19,11 @@ export default defineType({
       },
     },
     {
+      name: 'url',
+      type: 'url',
+      title: 'URL',
+    },
+    {
       name: 'description',
       type: 'text',
       title: 'Description',

@@ -31,10 +31,15 @@ export default defineType({
       title: 'Role',
       options: {
         list: [
-          {title: 'Student', value: 'student'},
-          {title: 'Teacher', value: 'teacher'},
+          { title: 'Student', value: 'student' },
+          { title: 'Teacher', value: 'teacher' },
         ],
       },
+    },
+    {
+      name: 'url',
+      type: 'url',
+      title: 'URL',
     },
     {
       name: 'createdAt',
@@ -47,4 +52,4 @@ export default defineType({
       title: 'Updated At',
     },
   ],
-})
+});
