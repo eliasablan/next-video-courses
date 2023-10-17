@@ -1,12 +1,9 @@
 import { getServerSession } from "next-auth";
-import Providers from "@/lib/providers";
 import SessionProvider from "@/lib/SessionProvider";
+import Providers from "@/lib/providers";
 
 import { Poppins } from "next/font/google";
 import "@/styles/globals.css";
-
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -25,13 +22,7 @@ export default async function RootLayout({ children }) {
     <html lang="en">
       <body className={poppins.className}>
         <Providers>
-          <SessionProvider session={session}>
-            <Header />
-            <div className="max-w-5xl m-auto w-full px-4 py-2">
-              {children}
-              <Footer />
-            </div>
-          </SessionProvider>
+          <SessionProvider session={session}>{children}</SessionProvider>
         </Providers>
       </body>
     </html>
