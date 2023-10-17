@@ -1,18 +1,18 @@
-"use client";
-import Link from "next/link";
-import { signIn, signOut, useSession } from "next-auth/react";
+'use client';
+import Link from 'next/link';
+import { signIn, signOut, useSession } from 'next-auth/react';
 
-import styles from "@/styles/Header.module.css";
+import styles from '@/styles/Header.module.css';
 
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { ModeDropdown } from "@/components/ButtonThemeToggle";
+} from '@/components/ui/dropdown-menu';
+import { ModeDropdown } from '@/components/ButtonThemeToggle';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -21,13 +21,13 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu";
+} from '@/components/ui/navigation-menu';
 
 const AuthDropdown = ({ session }) => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" className="ml-auto px-3">
+        <Button variant="outline" className="ml-auto px-2.5">
           <svg
             width="15"
             height="15"
@@ -48,7 +48,9 @@ const AuthDropdown = ({ session }) => {
       <DropdownMenuContent align="end">
         {session ? (
           <>
-            <DropdownMenuItem>Welcome, {session?.user?.name}</DropdownMenuItem>
+            <DropdownMenuItem>
+              Welcome, {session?.user?.name}
+            </DropdownMenuItem>
             <DropdownMenuItem onClick={() => signOut()}>
               Sign Out
               <svg
@@ -62,8 +64,8 @@ const AuthDropdown = ({ session }) => {
                 <path
                   d="M3 1C2.44771 1 2 1.44772 2 2V13C2 13.5523 2.44772 14 3 14H10.5C10.7761 14 11 13.7761 11 13.5C11 13.2239 10.7761 13 10.5 13H3V2L10.5 2C10.7761 2 11 1.77614 11 1.5C11 1.22386 10.7761 1 10.5 1H3ZM12.6036 4.89645C12.4083 4.70118 12.0917 4.70118 11.8964 4.89645C11.7012 5.09171 11.7012 5.40829 11.8964 5.60355L13.2929 7H6.5C6.22386 7 6 7.22386 6 7.5C6 7.77614 6.22386 8 6.5 8H13.2929L11.8964 9.39645C11.7012 9.59171 11.7012 9.90829 11.8964 10.1036C12.0917 10.2988 12.4083 10.2988 12.6036 10.1036L14.8536 7.85355C15.0488 7.65829 15.0488 7.34171 14.8536 7.14645L12.6036 4.89645Z"
                   fill="currentColor"
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
                 ></path>
               </svg>
             </DropdownMenuItem>
@@ -82,8 +84,8 @@ const AuthDropdown = ({ session }) => {
               <path
                 d="M4.5 1C4.22386 1 4 1.22386 4 1.5C4 1.77614 4.22386 2 4.5 2H12V13H4.5C4.22386 13 4 13.2239 4 13.5C4 13.7761 4.22386 14 4.5 14H12C12.5523 14 13 13.5523 13 13V2C13 1.44772 12.5523 1 12 1H4.5ZM6.60355 4.89645C6.40829 4.70118 6.09171 4.70118 5.89645 4.89645C5.70118 5.09171 5.70118 5.40829 5.89645 5.60355L7.29289 7H0.5C0.223858 7 0 7.22386 0 7.5C0 7.77614 0.223858 8 0.5 8H7.29289L5.89645 9.39645C5.70118 9.59171 5.70118 9.90829 5.89645 10.1036C6.09171 10.2988 6.40829 10.2988 6.60355 10.1036L8.85355 7.85355C9.04882 7.65829 9.04882 7.34171 8.85355 7.14645L6.60355 4.89645Z"
                 fill="currentColor"
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
               ></path>
             </svg>
           </DropdownMenuItem>
@@ -95,14 +97,17 @@ const AuthDropdown = ({ session }) => {
 
 const Header = () => {
   const { data: session } = useSession();
-  console.log("Header session", session);
+  console.log('Header session', session);
   return (
     <nav
       className={`max-w-5xl m-auto w-full px-4 py-2 border border-input shadow-sm ${styles.stickyheader}`}
     >
       <div className="flex items-center gap-8 justify-between">
         <div>
-          <Link href="/" className="text-2xl font-semibold hover:opacity-90">
+          <Link
+            href="/"
+            className="text-2xl font-semibold hover:opacity-90"
+          >
             Video Courses Web
           </Link>
         </div>
@@ -110,8 +115,10 @@ const Header = () => {
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
-                <Link href="/student/dashboard" legacyBehavior passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                <Link href="/dashboard" legacyBehavior passHref>
+                  <NavigationMenuLink
+                    className={navigationMenuTriggerStyle()}
+                  >
                     Dashboard
                   </NavigationMenuLink>
                 </Link>
@@ -119,7 +126,9 @@ const Header = () => {
 
               <NavigationMenuItem>
                 <Link href="/videos" legacyBehavior passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  <NavigationMenuLink
+                    className={navigationMenuTriggerStyle()}
+                  >
                     Videos
                   </NavigationMenuLink>
                 </Link>
@@ -127,7 +136,9 @@ const Header = () => {
 
               <NavigationMenuItem>
                 <Link href="/courses" legacyBehavior passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  <NavigationMenuLink
+                    className={navigationMenuTriggerStyle()}
+                  >
                     Courses
                   </NavigationMenuLink>
                 </Link>
