@@ -11,6 +11,14 @@ export default defineType({
       title: 'Name',
     },
     {
+      name: 'slug',
+      type: 'slug',
+      title: 'Slug',
+      options: {
+        source: 'name',
+      },
+    },
+    {
       name: 'price',
       type: 'number',
       title: 'Price',
@@ -23,7 +31,7 @@ export default defineType({
     {
       name: 'features',
       type: 'array',
-      of: [{type: 'string'}],
+      of: [{ type: 'string' }],
       title: 'Features',
     },
     {
@@ -37,4 +45,4 @@ export default defineType({
       title: 'Updated At',
     },
   ],
-})
+});

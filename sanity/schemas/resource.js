@@ -11,6 +11,14 @@ export default defineType({
       title: 'Title',
     },
     {
+      name: 'slug',
+      type: 'slug',
+      title: 'Slug',
+      options: {
+        source: 'title',
+      },
+    },
+    {
       name: 'description',
       type: 'text',
       title: 'Description',
@@ -21,10 +29,10 @@ export default defineType({
       title: 'Type',
       options: {
         list: [
-          {title: 'Document', value: 'document'},
-          {title: 'Image', value: 'image'},
-          {title: 'Audio', value: 'audio'},
-          {title: 'Video', value: 'video'},
+          { title: 'Document', value: 'document' },
+          { title: 'Image', value: 'image' },
+          { title: 'Audio', value: 'audio' },
+          { title: 'Video', value: 'video' },
         ],
       },
     },
@@ -36,7 +44,7 @@ export default defineType({
     {
       name: 'video',
       type: 'reference',
-      to: [{type: 'video'}],
+      to: [{ type: 'video' }],
       title: 'Video',
     },
     {
@@ -50,4 +58,4 @@ export default defineType({
       title: 'Updated At',
     },
   ],
-})
+});
