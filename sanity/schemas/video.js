@@ -1,4 +1,4 @@
-import {defineType} from 'sanity'
+import { defineType } from 'sanity';
 
 export default defineType({
   name: 'video',
@@ -19,6 +19,9 @@ export default defineType({
       name: 'thumbnail',
       type: 'image',
       title: 'Thumbnail',
+      options: {
+        hotspot: true,
+      },
     },
     {
       name: 'description',
@@ -33,7 +36,7 @@ export default defineType({
     {
       name: 'course',
       type: 'reference',
-      to: [{type: 'course'}],
+      to: [{ type: 'course' }],
       title: 'Course',
     },
     {
@@ -47,4 +50,4 @@ export default defineType({
       title: 'Updated At',
     },
   ],
-})
+});

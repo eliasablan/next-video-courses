@@ -1,4 +1,4 @@
-import {defineType} from 'sanity'
+import { defineType } from 'sanity';
 
 export default defineType({
   name: 'course',
@@ -16,9 +16,17 @@ export default defineType({
       title: 'Description',
     },
     {
+      name: 'image',
+      type: 'image',
+      title: 'Image',
+      options: {
+        hotspot: true,
+      },
+    },
+    {
       name: 'user',
       type: 'reference',
-      to: [{type: 'user'}],
+      to: [{ type: 'user' }],
       title: 'Teacher',
     },
     {
@@ -41,9 +49,9 @@ export default defineType({
       title: 'Course Level',
       options: {
         list: [
-          {title: 'Beginner', value: 'beginner'},
-          {title: 'Intermediate', value: 'intermediate'},
-          {title: 'Advanced', value: 'advanced'},
+          { title: 'Beginner', value: 'beginner' },
+          { title: 'Intermediate', value: 'intermediate' },
+          { title: 'Advanced', value: 'advanced' },
         ],
       },
     },
@@ -55,7 +63,7 @@ export default defineType({
     {
       name: 'tags',
       type: 'array',
-      of: [{type: 'string'}],
+      of: [{ type: 'string' }],
       title: 'Tags',
     },
     {
@@ -69,4 +77,4 @@ export default defineType({
       title: 'Updated At',
     },
   ],
-})
+});
