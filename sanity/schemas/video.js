@@ -19,6 +19,12 @@ export default defineType({
       },
     },
     {
+      name: 'content',
+      type: 'array',
+      of: [{ type: 'block' }],
+      title: 'Content',
+    },
+    {
       name: 'url',
       type: 'url',
       title: 'URL',

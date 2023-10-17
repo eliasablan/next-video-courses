@@ -50,6 +50,12 @@ export default defineType({
       title: 'Teacher',
     },
     {
+      name: 'content',
+      type: 'array',
+      of: [{ type: 'block'}],
+      title: 'Content'
+    },
+    {
       name: 'price',
       type: 'number',
       title: 'Price',
