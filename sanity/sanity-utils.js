@@ -1,13 +1,13 @@
 import { createClient, groq } from 'next-sanity';
 
-const getCourses = async () => {
-  const client = createClient({
-    projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
-    dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
-    title: 'Video Courses App',
-    apiVersion: '2023-09-17',
-  });
+const client = createClient({
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
+  title: 'Video Courses App',
+  apiVersion: '2023-09-17',
+});
 
+const getCourses = async () => {
   return client.fetch(
     groq`*[_type=="course"]{
       // ...,
@@ -16,33 +16,39 @@ const getCourses = async () => {
       title,
       "slug":slug.current,
       description,
-      url,
-      content,
+      courseLevel,
+      price,
+      discount,
+      user->{
+        username,
+        role
+      },
+      "image_crop": image.crop,
       "image_url": image.asset->url,
       "image_alt": image.alt,
       category,
       tags,
-      courseLevel,
-      price,
-      discount,
     }`
   );
 };
 
 const getVideos = async () => {
-  const client = createClient({
-    projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
-    dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
-    title: 'Video Courses App',
-    apiVersion: '2023-09-17',
-  });
-
   return client.fetch(
     groq`*[_type=="video"]{
-      ...,
-      course->{
-        ...
-      },
+      // ...,
+      _id,
+      _createdAt,
+      title,
+      "slug": slug.current,
+      "category": course->category,
+      description,
+      duration,
+      "course": course->title,
+      "course_price": course->price,
+      "course_level": course->courseLevel,
+      "course_thumbnail": course->image.asset->url,
+      "teacher": course->user->username,
+      "thumbnail_url": thumbnail.asset->url,
       "file": file.asset->url,
     }`
   );
