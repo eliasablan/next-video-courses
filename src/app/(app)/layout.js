@@ -18,7 +18,7 @@ export default async function RootLayout({ children }) {
   return (
     <>
       <Header />
-      <div className="max-w-5xl m-auto w-full p-4">
+      <div className="max-w-5xl m-auto w-full p-6">
         {children}
         <Footer />
       </div>
