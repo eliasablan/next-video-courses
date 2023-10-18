@@ -10,7 +10,6 @@ const Videos = async () => {
   }
 
   const videos = await getVideos();
-  console.log('videos', videos);
 
   return (
     <>
@@ -19,10 +18,10 @@ const Videos = async () => {
         videos?.map((video) => (
           <div className="p-3 my-3 border-2" key={video._id}>
             <h3 className="text-xl font-semibold">{video.title}</h3>
-            {video.category && <p>Category: {video.category}</p>}{' '}
-            <video controls style={{ width: '500px', height: 'auto' }}>
+            {video.category && <p>Category: {video.category}</p>}
+            {/* <video controls style={{ width: '500px', height: 'auto' }}>
               <source src={video.file} />
-            </video>
+            </video> */}
           </div>
         ))
       ) : (
