@@ -16,7 +16,7 @@ const Courses = async () => {
   return (
     <>
       <h1 className="text-2xl mb-6">Courses</h1>
-      <div class="grid grid-cols-12 gap-4">
+      <div className="grid grid-cols-12 gap-4">
         {courses ? (
           courses?.map((course) => (
             <div
