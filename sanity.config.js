@@ -18,6 +18,7 @@ const config = defineConfig({
   plugins: [deskTool(), visionTool()],
 
   basePath: '/admin',
+  useCdn: true,
 
   schema: {
     types: schemaTypes,
