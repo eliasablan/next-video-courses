@@ -1,5 +1,6 @@
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
+import Link from 'next/link';
 
 import { getVideos } from '../../../../sanity/sanity-utils';
 
@@ -16,9 +17,26 @@ const Videos = async () => {
       <h1 className="text-2xl mb-6">Videos</h1>
       {videos ? (
         videos?.map((video) => (
-          <div className="p-3 my-3 border-2" key={video._id}>
-            <h3 className="text-xl font-semibold">{video.title}</h3>
-            {video.category && <p>Category: {video.category}</p>}
+          <div
+            className="p-3 my-3 border-2 hover:scale-105 hover: transition"
+            key={video._id}
+          >
+            <Link
+              href={`/videos/${video.slug}`}
+              className="text-xl font-semibold"
+            >
+              {video.title}
+            </Link>
+            {video.course && (
+              <p className="font-medium">
+                {video.course}{' '}
+                {video.category && (
+                  <span className="italic font-thin">
+                    {video.category}
+                  </span>
+                )}
+              </p>
+            )}
             {/* <video controls style={{ width: '500px', height: 'auto' }}>
               <source src={video.file} />
             </video> */}
