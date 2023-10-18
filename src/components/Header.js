@@ -97,7 +97,7 @@ const AuthDropdown = ({ session }) => {
 
 const Header = () => {
   const { data: session } = useSession();
-  console.log('Header session', session);
+
   return (
     <nav
       className={`max-w-5xl m-auto w-full px-4 py-2 border border-input shadow-sm ${styles.stickyheader}`}
@@ -111,7 +111,7 @@ const Header = () => {
             Video Courses Web
           </Link>
         </div>
-        <div className="flex items-center gap-4">
+        <div className="hidden sm:flex md:flex lg:flex items-center gap-4">
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
