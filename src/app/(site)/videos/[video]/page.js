@@ -308,7 +308,6 @@ const Video = async ({ params }) => {
   const slug = params.video;
   const video = await getVideo(slug);
   const comments = getThreadedComments(commentsData);
-  console.log('comments', comments);
 
   return (
     <div className="grid grid-cols-12 gap-x-6">
