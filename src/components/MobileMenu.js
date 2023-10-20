@@ -23,9 +23,9 @@ const MobileMenu = ({
           as={Fragment}
           enter="ease-in-out duration-500"
           enterFrom="opacity-0"
-          enterTo="opacity-100"
+          enterTo="opacity-80"
           leave="ease-in-out duration-500"
-          leaveFrom="opacity-100"
+          leaveFrom="opacity-80"
           leaveTo="opacity-0"
         >
           <div className="fixed inset-0 bg-secondary bg-opacity-50 transition-opacity" />
