@@ -21,8 +21,9 @@ const Course = async ({ params }) => {
 
   return (
     <div className="grid grid-cols-12 gap-6">
-      <div className="col-span-12 lg:col-span-6">
-        <h1 className="text-2xl font-semibold mb-3">
+      {/* Info */}
+      <div className="col-span-12 lg:col-span-6 p-8 md:p-4">
+        <h1 className="text-2xl font-semibold mb-2">
           {capitalizeFirstLetter(course.title)}
         </h1>
         {course.category && (
@@ -59,25 +60,28 @@ const Course = async ({ params }) => {
           )}
         </div>
       </div>
-      <div className="relative col-span-12 lg:col-span-6">
+      {/* Image */}
+      <div className="relative col-span-12 lg:col-span-6 p-8 md:p-4">
         <Image
-          className="rounded-full border-2 mt-4 lg:mt-0"
+          className="rounded-lg border-2 mt-4 lg:mt-0"
           src={course.image_url}
           width={1024}
           height={512}
           alt={course.image_alt}
         />
       </div>
-      <div className="col-span-12 lg:col-span-6">
-        <h2 className="text-xl mb-3">Description</h2>
+      {/* Description */}
+      <div className="col-span-12 lg:col-span-6 p-8 md:p-4">
+        <h2 className="text-xl mb-4">Description</h2>
         <PortableText value={course.content} components={{}} />
       </div>
-      <div className="col-span-12 lg:col-span-6">
+      {/* Videos */}
+      <div className="col-span-12 lg:col-span-6 p-8 md:p-4">
         <h2 className="text-xl">Videos</h2>
         {videos ? (
           videos.map((video) => (
             <div
-              className="p-3 my-3 border-2 rounded-md hover:scale-105 hover:border-destructive transition"
+              className="p-6 my-4 border-2 rounded-md hover:scale-105 hover:border-destructive transition"
               key={video._id}
             >
               <Link
@@ -86,19 +90,11 @@ const Course = async ({ params }) => {
               >
                 {video.title}
               </Link>
-              {video.course && (
-                <p className="font-medium">
-                  {video.course}{' '}
-                  {video.category && (
-                    <span className="italic font-thin">
-                      {video.category}
-                    </span>
-                  )}
+              {video.duration && (
+                <p className="font-thin">
+                  {Math.floor(video.duration / 60)}:{video.duration % 60}{' '}
                 </p>
               )}
-              {/* <video controls style={{ width: '500px', height: 'auto' }}>
-              <source src={video.file} />
-            </video> */}
             </div>
           ))
         ) : (
