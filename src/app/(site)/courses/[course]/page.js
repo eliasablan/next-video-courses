@@ -81,7 +81,7 @@ const Course = async ({ params }) => {
         {videos ? (
           videos.map((video) => (
             <div
-              className="p-6 my-4 border-2 rounded-md hover:scale-105 hover:border-destructive transition"
+              className="px-6 py-4 my-4 border-2 rounded-md hover:scale-105 hover:border-destructive transition"
               key={video._id}
             >
               <Link
