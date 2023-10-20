@@ -307,7 +307,7 @@ const Video = async ({ params }) => {
   return (
     <div className="grid grid-cols-12 gap-x-6">
       {/* Seccion de video y contenito */}
-      <div className="col-span-8 grid grid-cols-12 h-min">
+      <div className="col-span-12 md:col-span-8 grid grid-cols-12 h-min">
         <h1 className="text-2xl font-medium mb-2 col-span-full">
           {video.title}
         </h1>
@@ -322,27 +322,28 @@ const Video = async ({ params }) => {
         <video controls className="col-span-full">
           <source src={video.file} />
         </video>
-        <div className="col-span-full mt-6">
+        <div className="col-span-full my-6">
           <PortableText value={video.content} components={{}} />
         </div>
       </div>
 
       {/* Seccion de Comentarios */}
-      <div className="col-span-4">
+      <div className="col-span-12 md:col-span-4">
         <h3 className="col-span-full text-xl mb-5">Comentarios</h3>
         <Separator className="col-span-full" />
         {comments.map((comment) => (
           <Fragment key={comment._id}>
-            <div className="grid grid-cols-5 my-3">
-              <Avatar className="col-span-1 left-2">
+            <div className="grid grid-cols-10 my-3">
+              <Avatar className="col-span-1 md:col-span-2 left-4 md:left-2">
                 <AvatarImage src="https://github.com/shadcn.png" />
                 <AvatarFallback>CN</AvatarFallback>
               </Avatar>
-              <div className="col-span-4">
+              <div className="col-span-8 ml-2">
                 <p className="text-md font-medium">{comment.username}</p>
                 <p className="text-sm text-muted-foreground">
                   {comment.content}
                 </p>
+                <p className="text-xs font-light mt-2">Reply</p>
               </div>
             </div>
             <Separator />
@@ -351,12 +352,11 @@ const Video = async ({ params }) => {
                 <Fragment key={response._id}>
                   <div className="grid grid-cols-10 my-3">
                     <div className="col-span-1 bg-accent"></div>
-                    <Avatar className="col-span-2 left-2">
+                    <Avatar className="col-span-1 md:col-span-2 left-4 md:left-2">
                       <AvatarImage src="https://github.com/shaadcn.png" />
                       <AvatarFallback>CN</AvatarFallback>
                     </Avatar>
-                    <div className="col-span-6">
-                      <p className="text-xs font-light m-2">Reply</p>
+                    <div className="col-span-6 ml-2">
                       <p className="text-md font-medium">
                         {response.username}
                       </p>
