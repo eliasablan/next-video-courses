@@ -151,15 +151,14 @@ const Header = () => {
 
   return (
     <nav
-      className={`max-w-5xl m-auto w-full px-4 py-2 border border-input shadow-sm ${styles.stickyheader}`}
+      className={`max-w-5xl m-auto w-full px-12 lg:px-4 py-2 border border-input shadow-sm ${styles.stickyheader}`}
     >
       <div className="flex items-center gap-8 justify-between">
         {/* Logo */}
         <div>
-          <ModeDropdown />
           <Link
             href="/"
-            className="ml-4 text-2xl font-semibold hover:opacity-90"
+            className="text-2xl font-semibold hover:opacity-90"
           >
             VCW
           </Link>
@@ -220,7 +219,7 @@ const Header = () => {
 
           <AuthDropdown session={session} />
 
-          {/* <ModeDropdown /> */}
+          <ModeDropdown />
         </div>
       </div>
     </nav>
