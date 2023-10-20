@@ -20,7 +20,7 @@ const Courses = async () => {
         {courses ? (
           courses?.map((course) => (
             <div
-              className="flex flex-col justify-between col-span-12 md:col-span-4 lg:col-span-3 p-4 my-3 border-2 rounded-md hover:scale-105 transition"
+              className="flex flex-col justify-between col-span-12 md:col-span-4 lg:col-span-3 p-4 my-3 border-2 rounded-md hover:scale-105 hover:border-destructive transition"
               key={course._id}
             >
               <div>
