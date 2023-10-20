@@ -24,6 +24,7 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu';
+import clsx from 'clsx';
 
 const AuthDropdown = ({ session }) => {
   return (
@@ -139,7 +140,6 @@ const Header = () => {
   const [navigation, setNavigation] = useState([]);
 
   useEffect(() => {
-    console.log('session useEffect');
     let menuOptionsToShow = [];
     allMenuOptions.map((option) => {
       if (!option.type || session?.user) {
@@ -156,11 +156,12 @@ const Header = () => {
       <div className="flex items-center gap-8 justify-between">
         {/* Logo */}
         <div>
+          <ModeDropdown />
           <Link
             href="/"
-            className="text-2xl font-semibold hover:opacity-90"
+            className="ml-4 text-2xl font-semibold hover:opacity-90"
           >
-            Video Courses Web
+            VCW
           </Link>
         </div>
 
@@ -190,7 +191,7 @@ const Header = () => {
         </Button>
 
         <MobileMenu
-          session
+          session={session}
           navigation={navigation}
           mobileMenuOpen={mobileMenuOpen}
           setMobileMenuOpen={setMobileMenuOpen}
@@ -202,9 +203,12 @@ const Header = () => {
             <NavigationMenuList>
               {navigation.map((item, index) => (
                 <NavigationMenuItem key={index}>
-                  <Link href={item.href} legacyBehavior passHref>
+                  <Link href={`/${item.href}`} legacyBehavior passHref>
                     <NavigationMenuLink
-                      className={navigationMenuTriggerStyle()}
+                      className={clsx(
+                        navigationMenuTriggerStyle(),
+                        'hover:text-destructive'
+                      )}
                     >
                       {item.title}
                     </NavigationMenuLink>
@@ -216,7 +220,7 @@ const Header = () => {
 
           <AuthDropdown session={session} />
 
-          <ModeDropdown />
+          {/* <ModeDropdown /> */}
         </div>
       </div>
     </nav>
