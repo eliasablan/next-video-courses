@@ -1,13 +1,20 @@
 import Image from 'next/image';
+import { getServerSession } from 'next-auth';
+import { redirect } from 'next/navigation';
+import { PortableText } from '@portabletext/react';
+
 import {
   getCourse,
   getVideosByCourse,
 } from '../../../../../sanity/sanity-utils';
 import { capitalizeFirstLetter } from '@/lib/utils';
 import Link from 'next/link';
-import { PortableText } from '@portabletext/react';
 
 const Course = async ({ params }) => {
+  const session = await getServerSession();
+  if (!session || !session.user) {
+    redirect('/api/auth/signin');
+  }
   const slug = params.course;
   const course = await getCourse(slug);
   const videos = await getVideosByCourse(course._id);

@@ -1,5 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { getServerSession } from 'next-auth';
+import { redirect } from 'next/navigation';
 import { PortableText } from '@portabletext/react';
 
 import { getVideo } from '../../../../../sanity/sanity-utils';
@@ -299,6 +301,10 @@ function getThreadedComments(data) {
 }
 
 const Video = async ({ params }) => {
+  const session = await getServerSession();
+  if (!session || !session.user) {
+    redirect('/api/auth/signin');
+  }
   const slug = params.video;
   const video = await getVideo(slug);
   const comments = getThreadedComments(commentsData);
