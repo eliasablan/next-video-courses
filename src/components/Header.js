@@ -158,7 +158,7 @@ const Header = () => {
         <div>
           <Link
             href="/"
-            className="bg-gradient-to-r from-orange-600 via-red-600 to-purple-600 bg-clip-text text-transparent drop-shadow text-2xl font-semibold hover:opacity-90"
+            className="bg-gradient-to-r from-yellow-400 via-red-600 to-blue-600 bg-clip-text text-transparent drop-shadow text-2xl font-semibold hover:opacity-90"
           >
             VCW
           </Link>
