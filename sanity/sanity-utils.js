@@ -17,57 +17,6 @@ const client = createClient({
 //   useCdn: false,
 // });\
 
-const getVideosByCourse = async (courseId) => {
-  return client.fetch(
-    groq`*[_type=="video" && course._ref==$courseId]{
-      // ...,
-      _id,
-      _createdAt,
-      title,
-      "slug": slug.current,
-      "category": course->category,
-      description,
-      duration,
-      "course": course->title,
-      "course_price": course->price,
-      "course_level": course->courseLevel,
-      "course_thumbnail": course->image.asset->url,
-      "teacher": course->user->username,
-      "thumbnail_url": thumbnail.asset->url,
-      "file": file.asset->url,
-    }`,
-    { courseId }
-  );
-};
-
-const getCourse = async (slug) => {
-  return client.fetch(
-    groq`*[_type=="course" && slug.current == $slug][0]
-    {
-      // ...,
-      _id,
-      _createdAt,
-      title,
-      "slug":slug.current,
-      description,
-      content,
-      courseLevel,
-      price,
-      discount,
-      user->{
-        username,
-        role
-      },
-      "image_crop": image.crop,
-      "image_url": image.asset->url,
-      "image_alt": image.alt,
-      category,
-      tags
-    }`,
-    { slug }
-  );
-};
-
 const getCourses = async () => {
   return client.fetch(
     groq`*[_type=="course"]{
@@ -115,4 +64,81 @@ const getVideos = async () => {
   );
 };
 
-export { getVideosByCourse, getCourse, getCourses, getVideos };
+const getCourse = async (slug) => {
+  return client.fetch(
+    groq`*[_type=="course" && slug.current == $slug][0]
+    {
+      // ...,
+      _id,
+      _createdAt,
+      title,
+      "slug":slug.current,
+      description,
+      content,
+      courseLevel,
+      price,
+      discount,
+      user->{
+        username,
+        role
+      },
+      "image_crop": image.crop,
+      "image_url": image.asset->url,
+      "image_alt": image.alt,
+      category,
+      tags
+    }`,
+    { slug }
+  );
+};
+
+const getVideo = async (slug) => {
+  return client.fetch(
+    groq`*[_type=="video" && slug.current == $slug][0]
+    {
+      // ...,
+      _id,
+      _createdAt,
+      title,
+      "slug": slug.current,
+      "category": course->category,
+      description,
+      content,
+      duration,
+      "course": course->title,
+      "course_slug": course->slug.current,
+      "course_price": course->price,
+      "course_level": course->courseLevel,
+      "course_thumbnail": course->image.asset->url,
+      "teacher": course->user->username,
+      "thumbnail_url": thumbnail.asset->url,
+      "file": file.asset->url,
+    }`,
+    { slug }
+  );
+};
+
+const getVideosByCourse = async (courseId) => {
+  return client.fetch(
+    groq`*[_type=="video" && course._ref==$courseId]{
+      // ...,
+      _id,
+      _createdAt,
+      title,
+      "slug": slug.current,
+      "category": course->category,
+      description,
+      duration,
+      "course": course->title,
+      "course_price": course->price,
+      "course_level": course->courseLevel,
+      "course_thumbnail": course->image.asset->url,
+      "teacher": course->user->username,
+      "thumbnail_url": thumbnail.asset->url,
+      "file": file.asset->url,
+    }`,
+    { courseId }
+  );
+};
+
+export { getCourses, getVideos, getCourse, getVideo, getVideosByCourse };
