@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
@@ -312,69 +311,72 @@ const Video = async ({ params }) => {
   return (
     <div className="grid grid-cols-12 gap-x-6">
       {/* Seccion de video y contenito */}
-      <div className="col-span-12 md:col-span-8 grid grid-cols-12 h-min">
-        <h1 className="text-2xl font-medium mb-2 col-span-full">
-          {video.title}
+      <div className="col-span-12 h-min mb-6">
+        <video controls className="col-span-full">
+          <source src={video.file} />
+        </video>
+      </div>
+      <div className="col-span-12 md:col-span-7">
+        <h1 className="text-3xl font-medium mb-2">
+          {capitalizeFirstLetter(video.title)}
         </h1>
-        <h2 className="mb-2 col-span-full">
+        <h2 className="mb-2">
           <Link
             href={`/courses/${video.course_slug}`}
-            className="text-l hover:text-destructive"
+            className="text-l hover:opacity-50"
           >
             {video.course}
           </Link>
         </h2>
-        <video controls className="col-span-full">
-          <source src={video.file} />
-        </video>
-        <div className="col-span-full my-6">
+        <div className="my-6">
           <PortableText value={video.content} components={{}} />
         </div>
       </div>
-
-      {/* Seccion de Comentarios */}
-      <div className="col-span-12 md:col-span-4">
-        <h3 className="col-span-full text-xl mb-5">Comentarios</h3>
-        <Separator className="col-span-full" />
-        {comments.map((comment) => (
-          <Fragment key={comment._id}>
-            <div className="grid grid-cols-10 my-3">
-              <Avatar className="col-span-1 md:col-span-2 left-4 md:left-2">
-                <AvatarImage src="https://github.com/shadcn.png" />
-                <AvatarFallback>CN</AvatarFallback>
-              </Avatar>
-              <div className="col-span-8 ml-2">
-                <p className="text-md font-medium">{comment.username}</p>
-                <p className="text-sm text-muted-foreground">
-                  {comment.content}
-                </p>
-                <p className="text-xs font-light mt-2">Reply</p>
+      <div className="col-span-12 md:col-span-5">
+        {/* Seccion de Comentarios */}
+        <div className="col-span-12 md:col-span-4">
+          <h3 className="col-span-full text-xl mb-5">Comentarios</h3>
+          <Separator className="col-span-full" />
+          {comments.map((comment) => (
+            <Fragment key={comment._id}>
+              <div className="grid grid-cols-10 my-3">
+                <Avatar className="col-span-1 md:col-span-2 left-4 md:left-2">
+                  <AvatarImage src="https://github.com/shadcn.png" />
+                  <AvatarFallback>CN</AvatarFallback>
+                </Avatar>
+                <div className="col-span-8 ml-2">
+                  <p className="text-md font-medium">{comment.username}</p>
+                  <p className="text-sm text-muted-foreground">
+                    {comment.content}
+                  </p>
+                  <p className="text-xs font-light mt-2">Reply</p>
+                </div>
               </div>
-            </div>
-            <Separator />
-            {comment.responses &&
-              comment.responses.map((response) => (
-                <Fragment key={response._id}>
-                  <div className="grid grid-cols-10 my-3">
-                    <div className="col-span-1 bg-accent"></div>
-                    <Avatar className="col-span-1 md:col-span-2 left-4 md:left-2">
-                      <AvatarImage src="https://github.com/shaadcn.png" />
-                      <AvatarFallback>CN</AvatarFallback>
-                    </Avatar>
-                    <div className="col-span-6 ml-2">
-                      <p className="text-md font-medium">
-                        {response.username}
-                      </p>
-                      <p className="text-sm text-muted-foreground">
-                        {response.content}
-                      </p>
+              <Separator />
+              {comment.responses &&
+                comment.responses.map((response) => (
+                  <Fragment key={response._id}>
+                    <div className="grid grid-cols-10 my-3">
+                      <div className="col-span-1 bg-accent"></div>
+                      <Avatar className="col-span-1 md:col-span-2 left-4 md:left-2">
+                        <AvatarImage src="https://github.com/shaadcn.png" />
+                        <AvatarFallback>CN</AvatarFallback>
+                      </Avatar>
+                      <div className="col-span-6 ml-2">
+                        <p className="text-md font-medium">
+                          {response.username}
+                        </p>
+                        <p className="text-sm text-muted-foreground">
+                          {response.content}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                  <Separator />
-                </Fragment>
-              ))}
-          </Fragment>
-        ))}
+                    <Separator />
+                  </Fragment>
+                ))}
+            </Fragment>
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -54,11 +54,12 @@ const AuthDropdown = ({ session }) => {
       <DropdownMenuContent align="end">
         {session ? (
           <>
-            {/* <DropdownMenuItem>
+            <div className="relative flex cursor-default items-center rounded-sm px-2 py-1.5 text-sm">
               Welcome, {session?.user?.name}
-            </DropdownMenuItem> */}
+            </div>
+            {/* <DropdownMenuItem></DropdownMenuItem> */}
             <DropdownMenuItem
-              className="flex justify-between"
+              className="flex justify-between cursor-pointer"
               onClick={() => signOut({ callbackUrl: '/' })}
             >
               Sign Out
@@ -83,7 +84,7 @@ const AuthDropdown = ({ session }) => {
           </>
         ) : (
           <DropdownMenuItem
-            className="flex justify-between"
+            className="flex justify-between cursor-pointer"
             onClick={() => signIn()}
           >
             Sign In
@@ -113,14 +114,14 @@ const AuthDropdown = ({ session }) => {
 
 const allMenuOptions = [
   {
-    title: 'About',
-    href: 'about',
-    type: '',
-  },
-  {
     title: 'Dashboard',
     href: 'dashboard',
     type: 'student',
+  },
+  {
+    title: 'Classroom',
+    href: 'classroom',
+    type: 'tutor',
   },
   {
     title: 'Courses',
@@ -128,9 +129,9 @@ const allMenuOptions = [
     type: 'student',
   },
   {
-    title: 'Classroom',
-    href: 'classroom',
-    type: 'tutor',
+    title: 'About',
+    href: 'about',
+    type: '',
   },
 ];
 
@@ -204,10 +205,7 @@ const Header = () => {
                 <NavigationMenuItem key={index}>
                   <Link href={`/${item.href}`} legacyBehavior passHref>
                     <NavigationMenuLink
-                      className={clsx(
-                        navigationMenuTriggerStyle(),
-                        'hover:text-destructive'
-                      )}
+                      className={clsx(navigationMenuTriggerStyle())}
                     >
                       {item.title}
                     </NavigationMenuLink>

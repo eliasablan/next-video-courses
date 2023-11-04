@@ -9,7 +9,10 @@ const Dashboard = async () => {
 
   return (
     <>
-      <h1 className="text-2xl mb-6">This is your Dashboard</h1>
+      <h1 className="text-2xl mb-6">This is your Dashboard.</h1>
+      <h2 className="text-xl mb-6">
+        Access is restricted for logged users.
+      </h2>
     </>
   );
 };
