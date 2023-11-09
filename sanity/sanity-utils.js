@@ -8,15 +8,6 @@ const client = createClient({
   useCdn: true,
 });
 
-// const writeClient = createClient({
-//   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
-//   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
-//   title: 'Video Courses App',
-//   apiVersion: '2023-09-17',
-//   token: process.env.SANITY_AUTH_TOKEN,
-//   useCdn: false,
-// });\
-
 const getCourses = async () => {
   return client.fetch(
     groq`*[_type=="course"]{
